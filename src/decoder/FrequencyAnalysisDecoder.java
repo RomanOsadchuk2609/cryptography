@@ -41,7 +41,7 @@ public class FrequencyAnalysisDecoder implements Decoder {
     private int getAmountOfCharactersInString(String character, String text) {
         int amount = 0;
         while (text.contains(character)) {
-            text = text.replace(character, "");
+            text = text.replaceFirst(character, "");
             amount++;
         }
         return amount;
