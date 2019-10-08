@@ -1,15 +1,17 @@
-package caesarAthensSystem;
+package encoder.ceasar;
+
+import encoder.Encoder;
 
 import java.util.stream.Collectors;
 
 import static util.CryptographyConstants.ALPHABET;
 import static util.CryptographyConstants.WHITE_SPACE;
 
-public class Encoder {
+public class CaesarAthensSystemEncoder implements Encoder {
     private int keyA = 3;
     private int keyB = 3;
 
-    public Encoder(int keyA, int keyB) {
+    public CaesarAthensSystemEncoder(int keyA, int keyB) {
         this.keyA = keyA;
         this.keyB = keyB;
     }

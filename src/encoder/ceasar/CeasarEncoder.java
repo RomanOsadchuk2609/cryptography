@@ -1,17 +1,20 @@
-package caesar;
+package encoder.ceasar;
+
+import encoder.Encoder;
 
 import java.util.stream.Collectors;
 
 import static util.CryptographyConstants.ALPHABET;
 import static util.CryptographyConstants.WHITE_SPACE;
 
-public class Encoder {
+public class CeasarEncoder implements Encoder {
     private int key = 3;
 
-    public Encoder(int key) {
+    public CeasarEncoder(int key) {
         this.key = key;
     }
 
+    @Override
     public String encode(String input) {
         String output = input.chars()
                 .mapToObj(c -> (char) c)
