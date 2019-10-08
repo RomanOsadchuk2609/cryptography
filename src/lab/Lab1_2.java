@@ -1,4 +1,4 @@
-package main;
+package lab;
 
 import decoder.Decoder;
 import decoder.FrequencyAnalysisDecoder;
@@ -6,7 +6,7 @@ import encoder.ceasar.CaesarAthensSystemEncoder;
 import encoder.ceasar.CeasarEncoder;
 import encoder.Encoder;
 
-public class Main {
+public class Lab1_2 {
     private static final String INPUT = ("Частотний аналіз, частотний криптоаналіз метод криптоаналізу," +
             " який ґрунтується на частоті появи знаків шифротексту. Власне на припущенні про існування" +
             " нетривіального статистичного розподілу окремих символів і їх послідовностей як у відкритому тексті," +
@@ -25,22 +25,24 @@ public class Main {
     private static void ceasarEncoding() {
         System.out.println("************CEASAR***********");
         Encoder encoder = new CeasarEncoder(5);
-        System.out.println("Inputed text: " + INPUT);
         String encodedText = encoder.encode(INPUT);
-        System.out.println("Encoded text: " + encodedText);
         Decoder decoder = new FrequencyAnalysisDecoder();
         String decodedText = decoder.decode(encodedText);
-        System.out.println("Decoded text: " + decodedText);
+        showResult(INPUT, encodedText, decodedText);
     }
 
     private static void ceasarAthensSystemEncoding() {
         System.out.println("************CEASAR AthensSystem***********");
         Encoder encoder = new CaesarAthensSystemEncoder(3, 5);
-        System.out.println("Inputed text: " + INPUT);
         String encodedText = encoder.encode(INPUT);
-        System.out.println("Encoded text: " + encodedText);
         Decoder decoder = new FrequencyAnalysisDecoder();
         String decodedText = decoder.decode(encodedText);
+        showResult(INPUT, encodedText, decodedText);
+    }
+
+    private static void showResult (String input, String encodedText, String decodedText) {
+        System.out.println("Inputed text: " + INPUT);
+        System.out.println("Encoded text: " + encodedText);
         System.out.println("Decoded text: " + decodedText);
     }
 }
