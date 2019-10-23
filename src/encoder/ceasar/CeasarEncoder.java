@@ -1,6 +1,7 @@
 package encoder.ceasar;
 
 import encoder.Encoder;
+import util.CryptographyConstants;
 
 import java.util.stream.Collectors;
 
@@ -25,8 +26,8 @@ public class CeasarEncoder implements Encoder {
 
     private String encodeCharacter(String input, char character) {
         String characterString = String.valueOf(character);
-        if (WHITE_SPACE.equals(characterString)) {
-            return WHITE_SPACE;
+        if (!CryptographyConstants.ALPHABET.contains(characterString)) {
+            return characterString;
         } else if (input.contains(characterString)) {
             int newIndex = ALPHABET.indexOf(characterString) + key;
             while (newIndex >= ALPHABET.size()) {

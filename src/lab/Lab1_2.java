@@ -18,7 +18,7 @@ public class Lab1_2 {
             "(двобуквених послідовностей), триграм і т.д. у разі поліалфавітного шифрів.").toLowerCase();
 
     public static void main(String[] args) {
-        ceasarEncoding();
+        //ceasarEncoding();
         ceasarAthensSystemEncoding();
     }
 

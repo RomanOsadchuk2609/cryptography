@@ -17,7 +17,7 @@ public class CryptographyConstants {
             "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ь", "ю", "я"
     ));
 
-    private static final List<String> characterFrequencySortedList =
+    public static final List<String> characterFrequencySortedList =
             CryptographyUtils.convertStringToList("оанвиіетклрсудмпбгзяєжїйхцчшщьюф");
 
     public static final String WHITE_SPACE = " ";
