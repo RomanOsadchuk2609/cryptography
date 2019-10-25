@@ -12,9 +12,9 @@ public class FrequencyAnalysisDecoder implements Decoder {
         Set<String> characterFrequencySet = buildCharacterFrequencySet(encodedText);
         List<String> characterFrequencyList = new ArrayList<>(characterFrequencySet);
         String mostOftenLetter = characterFrequencyList.get(0);
-        Integer step = CryptographyConstants.ALPHABET.indexOf(mostOftenLetter) -
+        int key = CryptographyConstants.ALPHABET.indexOf(mostOftenLetter) -
                 CryptographyConstants.ALPHABET.indexOf(CryptographyConstants.characterFrequencySortedList.get(0));
-        System.out.println(step);
+        System.out.println("Key = " + key);
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < encodedText.length(); i++) {
@@ -22,24 +22,20 @@ public class FrequencyAnalysisDecoder implements Decoder {
             if (!CryptographyConstants.ALPHABET.contains(character)) {
                 result.append(character);
             } else {
-                Integer indexOfEncodedCharacter = CryptographyConstants.ALPHABET.indexOf(character);
-                Integer indexOfDecodedCharacter = indexOfEncodedCharacter - step;
-                while (indexOfDecodedCharacter < 0) {
-                    indexOfDecodedCharacter += CryptographyConstants.ALPHABET.size();
+                int index = CryptographyConstants.ALPHABET.indexOf(character) - key;
+                if (index < 0 || index >= CryptographyConstants.ALPHABET.size()) {
+                    index = Math.abs(Math.abs(index)- CryptographyConstants.ALPHABET.size());
                 }
-                while (indexOfDecodedCharacter > CryptographyConstants.ALPHABET.size() - 1) {
-                    indexOfDecodedCharacter -= CryptographyConstants.ALPHABET.size();
-                }
-                result.append(CryptographyConstants.ALPHABET.get(indexOfDecodedCharacter));
+                result.append(CryptographyConstants.ALPHABET.get(index));
             }
         }
         return result.toString();
     }
 
-    private Set<String> buildCharacterFrequencySet(String text) {
+    protected Set<String> buildCharacterFrequencySet(String text) {
         Map<String, Double> characterFrequencyMap = new HashMap<>();
         for (String character : CryptographyConstants.ALPHABET) {
-            characterFrequencyMap.put(character, getAmountOfCharactersInString(character, text));
+            characterFrequencyMap.put(character, getCharacterFrequencyInString(character, text));
         }
         //sort map by values in descending order
         characterFrequencyMap = characterFrequencyMap
@@ -51,13 +47,13 @@ public class FrequencyAnalysisDecoder implements Decoder {
         return characterFrequencyMap.keySet();
     }
 
-    private double getAmountOfCharactersInString(String character, String text) {
+    private double getCharacterFrequencyInString(String character, String text) {
         double amount = 0;
         double textSize = text.replace(CryptographyConstants.WHITE_SPACE, "").length();
         while (text.contains(character)) {
             text = text.replaceFirst(character, "");
             amount++;
         }
-        return amount/textSize;
+        return amount / textSize;
     }
 }

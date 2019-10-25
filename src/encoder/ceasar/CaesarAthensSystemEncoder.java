@@ -1,7 +1,6 @@
 package encoder.ceasar;
 
 import encoder.Encoder;
-import util.CryptographyConstants;
 
 import java.util.stream.Collectors;
 
@@ -10,7 +9,7 @@ import static util.CryptographyConstants.WHITE_SPACE;
 
 public class CaesarAthensSystemEncoder implements Encoder {
     private int keyA = 3;
-    private int keyB = 3;
+    private int keyB = 5;
 
     public CaesarAthensSystemEncoder(int keyA, int keyB) {
         this.keyA = keyA;
@@ -30,7 +29,7 @@ public class CaesarAthensSystemEncoder implements Encoder {
         if (WHITE_SPACE.equals(characterString)) {
             return WHITE_SPACE;
         } else if (input.contains(characterString)) {
-            int newIndex = (keyA * ALPHABET.indexOf(characterString) + keyB)% ALPHABET.size();
+            int newIndex = (keyA * ALPHABET.indexOf(characterString) + keyB) % ALPHABET.size();
             return ALPHABET.get(newIndex);
         } else {
             return "";
