@@ -1,14 +1,14 @@
-package decoder;
+package decryptor;
 
 import util.CryptographyConstants;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class FrequencyAnalysisDecoder implements Decoder {
+public class FrequencyAnalysisDecryptor implements Decryptor {
 
     @Override
-    public String decode(String encodedText) {
+    public String decrypt(String encodedText) {
         Set<String> characterFrequencySet = buildCharacterFrequencySet(encodedText);
         List<String> characterFrequencyList = new ArrayList<>(characterFrequencySet);
         String mostOftenLetter = characterFrequencyList.get(0);

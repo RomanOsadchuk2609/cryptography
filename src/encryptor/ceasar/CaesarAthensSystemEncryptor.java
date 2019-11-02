@@ -1,30 +1,29 @@
-package encoder.ceasar;
+package encryptor.ceasar;
 
-import encoder.Encoder;
+import encryptor.Encryptor;
 
 import java.util.stream.Collectors;
 
 import static util.CryptographyConstants.ALPHABET;
 import static util.CryptographyConstants.WHITE_SPACE;
 
-public class CaesarAthensSystemEncoder implements Encoder {
+public class CaesarAthensSystemEncryptor implements Encryptor {
     private int keyA = 3;
     private int keyB = 5;
 
-    public CaesarAthensSystemEncoder(int keyA, int keyB) {
+    public CaesarAthensSystemEncryptor(int keyA, int keyB) {
         this.keyA = keyA;
         this.keyB = keyB;
     }
 
-    public String encode(String input) {
-        String output = input.chars()
+    public String encrypt(String input) {
+        return input.chars()
                 .mapToObj(c -> (char) c)
-                .map(c -> encodeCharacter(input, c))
+                .map(c -> encryptCharacter(input, c))
                 .collect(Collectors.joining());
-        return output;
     }
 
-    private String encodeCharacter(String input, char character) {
+    private String encryptCharacter(String input, char character) {
         String characterString = String.valueOf(character);
         if (WHITE_SPACE.equals(characterString)) {
             return WHITE_SPACE;

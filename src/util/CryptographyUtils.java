@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CryptographyUtils {
+    private CryptographyUtils() {
+    }
 
     /**
      * Converts string into list of strings where each elements is a character from given string

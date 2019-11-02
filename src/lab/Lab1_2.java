@@ -1,11 +1,11 @@
 package lab;
 
-import decoder.Decoder;
-import decoder.FrequencyAnalysisDecoder;
-import decoder.FrequencyAnalysisDecoderForAthensSystem;
-import encoder.ceasar.CaesarAthensSystemEncoder;
-import encoder.ceasar.CeasarEncoder;
-import encoder.Encoder;
+import decryptor.Decryptor;
+import decryptor.FrequencyAnalysisDecryptor;
+import decryptor.FrequencyAnalysisDecryptorForAthensSystem;
+import encryptor.ceasar.CaesarAthensSystemEncryptor;
+import encryptor.ceasar.CeasarEncryptor;
+import encryptor.Encryptor;
 
 public class Lab1_2 {
     private static final String INPUT = ("Частотний аналіз, частотний криптоаналіз метод криптоаналізу," +
@@ -26,25 +26,25 @@ public class Lab1_2 {
             "ображаються більш детально, що полегшує її читання та ілюструє принцип роботиЗахідний фронт Першої світової війни (1914–1918) — воєнні дії, що тривали на території Західної Європи з серпня 1914 до листопада 1918 року за часів Першої світової війни. Географічно Західний фронт (Західноєвропейський театр воєнних дій) охоплював Бельгію, Люксембург, німецькі Ельзас, Лотарингію та рейнські провінції, а також північний схід Франції. На сході зона бойових дій обмежувалася Рейном, з півночі — нейтральними Нідерландами, із заходу — морським узбережжям від гирла р. Шельди до гирла р. Сени і з півдня — умовною лінією р. Сена, Париж, швейцарський кордон. Протяжність фронту від річки Шельди до швейцарського кордону сягала 480 км, у глибину доходила до 500 км, від Рейну до Кале. Західна частина театру воєнних дій становила рівнину з розгалуженою дорожньою мережею, зручну для маневрування та дій великих військових об'єднань; східна частина була переважно гірською (Арденни, Аргон, Вогези), що обмежувало свободу маневру військ. Особливістю Західного фронту було промислове значення регіону (вугільні копальні, залізна руда, розвинена обробна промисловість), де точилися затяті бої та щільна насиченість населеними пунктами, важливими об'єктами виробництва, інфраструктури, історичними та культурними цінностями Західної Європи..").toLowerCase();
 
     public static void main(String[] args) {
-        ceasarEncoding();
+        //ceasarEncoding();
         ceasarAthensSystemEncoding();
     }
 
     private static void ceasarEncoding() {
         System.out.println("************CEASAR***********");
-        Encoder encoder = new CeasarEncoder(5);
-        String encodedText = encoder.encode(INPUT);
-        Decoder decoder = new FrequencyAnalysisDecoder();
-        String decodedText = decoder.decode(encodedText);
+        Encryptor encryptor = new CeasarEncryptor(5);
+        String encodedText = encryptor.encrypt(INPUT);
+        Decryptor decryptor = new FrequencyAnalysisDecryptor();
+        String decodedText = decryptor.decrypt(encodedText);
         showResult(INPUT, encodedText, decodedText);
     }
 
     private static void ceasarAthensSystemEncoding() {
         System.out.println("************CEASAR AthensSystem***********");
-        Encoder encoder = new CaesarAthensSystemEncoder(3, 5);
-        String encodedText = encoder.encode(INPUT);
-        Decoder decoder = new FrequencyAnalysisDecoderForAthensSystem();
-        String decodedText = decoder.decode(encodedText);
+        Encryptor encryptor = new CaesarAthensSystemEncryptor(3, 5);
+        String encodedText = encryptor.encrypt(INPUT);
+        Decryptor decryptor = new FrequencyAnalysisDecryptorForAthensSystem();
+        String decodedText = decryptor.decrypt(encodedText);
         showResult(INPUT, encodedText, decodedText);
     }
 
