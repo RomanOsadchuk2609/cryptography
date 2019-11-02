@@ -1,4 +1,4 @@
-package util;
+package main.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,5 +21,7 @@ public class CryptographyConstants {
             CryptographyUtils.convertStringToList("оанвиіетклрсудмпбгзяєжїйхцчшщьюф");
 
     public static final String WHITE_SPACE = " ";
+
+    public static final String EMPTY_STRING = "";
 
 }

@@ -1,6 +1,6 @@
-package decryptor;
+package main.decryptor;
 
-import util.CryptographyConstants;
+import main.util.CryptographyConstants;
 
 import java.util.ArrayList;
 import java.util.List;

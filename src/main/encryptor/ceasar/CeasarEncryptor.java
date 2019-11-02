@@ -1,11 +1,11 @@
-package encryptor.ceasar;
+package main.encryptor.ceasar;
 
-import encryptor.Encryptor;
-import util.CryptographyConstants;
+import main.encryptor.Encryptor;
+import main.util.CryptographyConstants;
 
 import java.util.stream.Collectors;
 
-import static util.CryptographyConstants.ALPHABET;
+import static main.util.CryptographyConstants.ALPHABET;
 
 public class CeasarEncryptor implements Encryptor {
     private int key = 3;
@@ -25,7 +25,7 @@ public class CeasarEncryptor implements Encryptor {
     private String encryptCharacter(String input, char character) {
         String characterString = String.valueOf(character);
         if (!CryptographyConstants.ALPHABET.contains(characterString)) {
-            return "";
+            return CryptographyConstants.EMPTY_STRING;
         } else if (input.contains(characterString)) {
             int newIndex = ALPHABET.indexOf(characterString) + key;
             while (newIndex >= ALPHABET.size()) {
@@ -33,7 +33,7 @@ public class CeasarEncryptor implements Encryptor {
             }
             return ALPHABET.get(newIndex);
         } else {
-            return "";
+            return CryptographyConstants.EMPTY_STRING;
         }
     }
 

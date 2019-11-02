@@ -1,11 +1,11 @@
-package encryptor.ceasar;
+package main.encryptor.ceasar;
 
-import encryptor.Encryptor;
+import main.encryptor.Encryptor;
+import main.util.CryptographyConstants;
 
 import java.util.stream.Collectors;
 
-import static util.CryptographyConstants.ALPHABET;
-import static util.CryptographyConstants.WHITE_SPACE;
+import static main.util.CryptographyConstants.ALPHABET;
 
 public class CaesarAthensSystemEncryptor implements Encryptor {
     private int keyA = 3;
@@ -25,13 +25,13 @@ public class CaesarAthensSystemEncryptor implements Encryptor {
 
     private String encryptCharacter(String input, char character) {
         String characterString = String.valueOf(character);
-        if (WHITE_SPACE.equals(characterString)) {
-            return WHITE_SPACE;
+        if (!ALPHABET.contains(characterString)) {
+            return CryptographyConstants.EMPTY_STRING;
         } else if (input.contains(characterString)) {
             int newIndex = (keyA * ALPHABET.indexOf(characterString) + keyB) % ALPHABET.size();
             return ALPHABET.get(newIndex);
         } else {
-            return "";
+            return CryptographyConstants.EMPTY_STRING;
         }
     }
 

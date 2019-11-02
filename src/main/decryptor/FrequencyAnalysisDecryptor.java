@@ -1,6 +1,6 @@
-package decryptor;
+package main.decryptor;
 
-import util.CryptographyConstants;
+import main.util.CryptographyConstants;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -49,9 +49,9 @@ public class FrequencyAnalysisDecryptor implements Decryptor {
 
     private double getCharacterFrequencyInString(String character, String text) {
         double amount = 0;
-        double textSize = text.replace(CryptographyConstants.WHITE_SPACE, "").length();
+        double textSize = text.replace(CryptographyConstants.WHITE_SPACE, CryptographyConstants.EMPTY_STRING).length();
         while (text.contains(character)) {
-            text = text.replaceFirst(character, "");
+            text = text.replaceFirst(character, CryptographyConstants.EMPTY_STRING);
             amount++;
         }
         return amount / textSize;
