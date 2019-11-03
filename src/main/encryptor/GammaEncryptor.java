@@ -14,32 +14,11 @@ public class GammaEncryptor implements Encryptor {
         this.key = key;
     }
 
-    /*@Override
-    public String encrypt(String text) {
-        List<Integer> result = new ArrayList<>();
-        List<String> characters = CryptographyUtils.convertStringToList(text);
-        for (String character : characters) {
-            if (CryptographyConstants.ALPHABET.contains(character)) {
-                result.add(encryptCharacter(character));
-            }
-        }
-        return result.stream()
-                .map(i -> i > 9
-                        ? i.toString()
-                        : "0" + i.toString())
-                .collect(Collectors.joining());
-    }
-
-    private int encryptCharacter(String character) {
-        int charIndex = CryptographyConstants.ALPHABET.indexOf(character);
-        return (charIndex + key.get(charIndex)) % CryptographyConstants.ALPHABET.size();
-    }*/
-
     @Override
     public String encrypt(String text) {
         List<Integer> result = new ArrayList<>();
         List<String> characters = CryptographyUtils.convertStringToList(text);
-        int gammaIndex =0;
+        int gammaIndex = 0;
         while (!characters.isEmpty()) {
             String character = characters.get(0);
             if (CryptographyConstants.ALPHABET.contains(character)) {
