@@ -3,14 +3,11 @@ package main.lab;
 import main.decryptor.Decryptor;
 import main.decryptor.FrequencyAnalysisDecryptor;
 import main.decryptor.FrequencyAnalysisDecryptorForAthensSystem;
+import main.encryptor.Encryptor;
 import main.encryptor.ceasar.CaesarAthensSystemEncryptor;
 import main.encryptor.ceasar.CeasarEncryptor;
-import main.encryptor.Encryptor;
-import main.util.FileReader;
 
-public class Lab1_2 {
-
-    private static final String INPUT = FileReader.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text.txt");
+public class Lab1_2 extends Lab {
 
     public static void main(String[] args) {
         ceasarEncoding();
@@ -33,11 +30,5 @@ public class Lab1_2 {
         Decryptor decryptor = new FrequencyAnalysisDecryptorForAthensSystem();
         String decodedText = decryptor.decrypt(encodedText);
         showResult(INPUT, encodedText, decodedText);
-    }
-
-    private static void showResult (String input, String encodedText, String decodedText) {
-        System.out.println("Inputed text: " + INPUT);
-        System.out.println("Encoded text: " + encodedText);
-        System.out.println("Decoded text: " + decodedText);
     }
 }

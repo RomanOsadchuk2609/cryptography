@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class FrequencyAnalysisDecryptor implements Decryptor {
 
     @Override
-    public String decrypt(String encodedText) {
-        Set<String> characterFrequencySet = buildCharacterFrequencySet(encodedText);
+    public String decrypt(String encryptedText) {
+        Set<String> characterFrequencySet = buildCharacterFrequencySet(encryptedText);
         List<String> characterFrequencyList = new ArrayList<>(characterFrequencySet);
         String mostOftenLetter = characterFrequencyList.get(0);
         int key = CryptographyConstants.ALPHABET.indexOf(mostOftenLetter) -
@@ -17,8 +17,8 @@ public class FrequencyAnalysisDecryptor implements Decryptor {
         System.out.println("Key = " + key);
 
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < encodedText.length(); i++) {
-            String character = String.valueOf(encodedText.charAt(i));
+        for (int i = 0; i < encryptedText.length(); i++) {
+            String character = String.valueOf(encryptedText.charAt(i));
             if (!CryptographyConstants.ALPHABET.contains(character)) {
                 result.append(character);
             } else {
