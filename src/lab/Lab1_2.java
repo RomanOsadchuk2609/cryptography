@@ -2,7 +2,6 @@ package lab;
 
 import decoder.Decoder;
 import decoder.FrequencyAnalysisDecoder;
-import decoder.FrequencyAnalysisDecoderForAthensSystem;
 import encoder.ceasar.CaesarAthensSystemEncoder;
 import encoder.ceasar.CeasarEncoder;
 import encoder.Encoder;
@@ -26,7 +25,7 @@ public class Lab1_2 {
             "ображаються більш детально, що полегшує її читання та ілюструє принцип роботиЗахідний фронт Першої світової війни (1914–1918) — воєнні дії, що тривали на території Західної Європи з серпня 1914 до листопада 1918 року за часів Першої світової війни. Географічно Західний фронт (Західноєвропейський театр воєнних дій) охоплював Бельгію, Люксембург, німецькі Ельзас, Лотарингію та рейнські провінції, а також північний схід Франції. На сході зона бойових дій обмежувалася Рейном, з півночі — нейтральними Нідерландами, із заходу — морським узбережжям від гирла р. Шельди до гирла р. Сени і з півдня — умовною лінією р. Сена, Париж, швейцарський кордон. Протяжність фронту від річки Шельди до швейцарського кордону сягала 480 км, у глибину доходила до 500 км, від Рейну до Кале. Західна частина театру воєнних дій становила рівнину з розгалуженою дорожньою мережею, зручну для маневрування та дій великих військових об'єднань; східна частина була переважно гірською (Арденни, Аргон, Вогези), що обмежувало свободу маневру військ. Особливістю Західного фронту було промислове значення регіону (вугільні копальні, залізна руда, розвинена обробна промисловість), де точилися затяті бої та щільна насиченість населеними пунктами, важливими об'єктами виробництва, інфраструктури, історичними та культурними цінностями Західної Європи..").toLowerCase();
 
     public static void main(String[] args) {
-        ceasarEncoding();
+        //ceasarEncoding();
         ceasarAthensSystemEncoding();
     }
 
@@ -41,10 +40,9 @@ public class Lab1_2 {
 
     private static void ceasarAthensSystemEncoding() {
         System.out.println("************CEASAR AthensSystem***********");
-        Encoder encoder = new CaesarAthensSystemEncoder(3, 5);
+        Encoder encoder = new CaesarAthensSystemEncoder(7, 5);
         String encodedText = encoder.encode(INPUT);
-        Decoder decoder = new FrequencyAnalysisDecoderForAthensSystem();
-        String decodedText = decoder.decode(encodedText);
+        String decodedText = ((CaesarAthensSystemEncoder) encoder).decode(encodedText);
         showResult(INPUT, encodedText, decodedText);
     }
 
