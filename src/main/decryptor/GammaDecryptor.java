@@ -17,8 +17,7 @@ public class GammaDecryptor implements Decryptor {
         List<Integer> encryptedList = buildEncryptedList(encryptedText);
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < encryptedList.size(); i++) {
-            int gammaIndex = i % key.size();
-            int charIndex = (encryptedList.get(i) + (CryptographyConstants.ALPHABET.size() - key.get(gammaIndex)))
+            int charIndex = (encryptedList.get(i) + (CryptographyConstants.ALPHABET.size() - key.get(i)))
                     % CryptographyConstants.ALPHABET.size();
             result.append(CryptographyConstants.ALPHABET.get(charIndex));
         }
@@ -36,11 +35,4 @@ public class GammaDecryptor implements Decryptor {
         }
         return resultList;
     }
-
-    /*private String decryptCharacter (int encryptedCharacter, int gammaIndex) {
-        int index = gammaIndex % CryptographyConstants.ALPHABET.size();
-        int charIndex = (encryptedList.get(index) + (CryptographyConstants.ALPHABET.size() - key.get(index)))
-                % CryptographyConstants.ALPHABET.size();
-
-    }*/
 }

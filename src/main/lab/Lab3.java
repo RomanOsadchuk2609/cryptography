@@ -15,12 +15,14 @@ public class Lab3 extends Lab {
     public static void main(String[] args) {
         List<Integer> key = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < CryptographyConstants.ALPHABET.size(); i++) {
+        for (int i = 0; i < 3; i++) {
             key.add(random.nextInt(CryptographyConstants.ALPHABET.size()));//[0, ..., 32]
         }
-        Encryptor encryptor = new GammaEncryptor(key);
+
+        GammaEncryptor encryptor = new GammaEncryptor(key);
         String encryptedText = encryptor.encrypt(INPUT);
-        Decryptor decryptor = new GammaDecryptor(key);
+        List<Integer> gamma = encryptor.getGamma();
+        Decryptor decryptor = new GammaDecryptor(gamma);
         String decryptedText = decryptor.decrypt(encryptedText);
         showResult(INPUT, encryptedText, decryptedText);
     }
