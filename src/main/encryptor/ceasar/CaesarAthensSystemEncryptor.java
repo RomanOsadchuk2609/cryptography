@@ -1,4 +1,4 @@
-package encoder.ceasar;
+package main.encryptor.ceasar;
 
 import main.encryptor.Encryptor;
 import main.util.CryptographyConstants;
@@ -7,16 +7,17 @@ import java.util.stream.Collectors;
 
 import static main.util.CryptographyConstants.ALPHABET;
 
-public class CaesarAthensSystemEncoder implements Encoder {
+public class CaesarAthensSystemEncryptor implements Encryptor {
     private int keyA = 3;
     private int keyB = 5;
 
-    public CaesarAthensSystemEncoder(int keyA, int keyB) {
+    public CaesarAthensSystemEncryptor(int keyA, int keyB) {
         this.keyA = keyA;
         this.keyB = keyB;
     }
 
-    public String encode(String input) {
+    @Override
+    public String encrypt(String input) {
         return input.chars()
                 .mapToObj(c -> (char) c)
                 .map(c -> encryptCharacter(input, c))
