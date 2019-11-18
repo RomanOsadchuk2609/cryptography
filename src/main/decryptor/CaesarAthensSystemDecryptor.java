@@ -26,8 +26,7 @@ public class CaesarAthensSystemDecryptor implements Decryptor {
         String characterString = String.valueOf(character);
         if (CryptographyConstants.ALPHABET.contains(characterString) && input.contains(characterString)) {
             int newIndex = (modInverse(keyA, CryptographyConstants.ALPHABET.size())
-                    * (CryptographyConstants.ALPHABET.indexOf(characterString)
-                    + CryptographyConstants.ALPHABET.size() - keyB));
+                    * (CryptographyConstants.ALPHABET.indexOf(characterString) + CryptographyConstants.ALPHABET.size() - keyB));
             if (newIndex < 0) {
                 newIndex *= -1;
             }

@@ -14,7 +14,7 @@ public class Lab1_2 extends Lab {
     }
 
     public static void main(String[] args) {
-        ceasarEncryption();
+//        ceasarEncryption();
         ceasarAthensSystemEncryption();
     }
 
@@ -29,9 +29,14 @@ public class Lab1_2 extends Lab {
 
     private static void ceasarAthensSystemEncryption() {
         System.out.println("************CEASAR AthensSystem***********");
-        Encryptor encryptor = new CaesarAthensSystemEncryptor(7, 5);
+        Encryptor encryptor = null;
+        try {
+            encryptor = new CaesarAthensSystemEncryptor(3, 11);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String encodedText = encryptor.encrypt(INPUT);
-        Decryptor decryptor = new CaesarAthensSystemDecryptor(7, 5);
+        Decryptor decryptor = new CaesarAthensSystemDecryptor(11, 11);
         String decodedText = decryptor.decrypt(encodedText);
         showResult(INPUT, encodedText, decodedText);
     }

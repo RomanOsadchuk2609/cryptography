@@ -11,7 +11,10 @@ public class CaesarAthensSystemEncryptor implements Encryptor {
     private int keyA = 3;
     private int keyB = 5;
 
-    public CaesarAthensSystemEncryptor(int keyA, int keyB) {
+    public CaesarAthensSystemEncryptor(int keyA, int keyB) throws Exception {
+        if (ALPHABET.size() % keyA == 0) {
+            throw new Exception("Invalid key");
+        }
         this.keyA = keyA;
         this.keyB = keyB;
     }
@@ -36,15 +39,6 @@ public class CaesarAthensSystemEncryptor implements Encryptor {
 
     public static int gcd(int x, int y) {
         return (y == 0) ? x : gcd(y, x % y);
-    }
-
-    int modInverse(int a, int m) {
-        a = a % m;
-        for (int x = 1; x < m; x++) {
-            if ((a * x) % m == 1)
-                return x;
-        }
-        return 0;
     }
 
     public int getKeyA() {
