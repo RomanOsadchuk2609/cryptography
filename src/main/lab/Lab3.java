@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Lab3 extends Lab {
     static {
-        INPUT = FileReader.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text3.txt");
+        INPUT = FileReader.readFile("/Users/dron/IdeaProjects/cryptography/src/res/text3.txt");
     }
 
     public static void main(String[] args) {

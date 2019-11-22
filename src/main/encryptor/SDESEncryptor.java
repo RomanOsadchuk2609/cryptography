@@ -5,12 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class SDESEncryptor {
-    /**
-     * Produces encrypted version of the string
-     * @param msg plain text
-     * @param key encryption key
-     * @return encrypted string
-     */
+
     public static String encrypt(String msg, int key) {
         int[] keys = getKeys(key);
         StringBuilder builder = new StringBuilder(msg.length());
@@ -20,59 +15,11 @@ public class SDESEncryptor {
         return builder.toString();
     }
 
-    /**
-     * Writes encrypted contents of in to out
-     * @param in source of plain data
-     * @param out destination
-     * @param key encryption key
-     * @throws IOException
-     */
-    public static void encrypt(InputStream in, OutputStream out, int key) throws IOException {
-        int[] keys = getKeys(key);
-        while(in.available() != 0)
-            out.write(encrypt(in.read(), keys));
-    }
-
-    /**
-     * Produces decrypted version of the string
-     * @param msg cypher text
-     * @param key encryption key
-     * @return decrypted string
-     */
-    public static String decrypt(String msg, int key) {
-        int[] keys = getKeys(key);
-        StringBuilder builder = new StringBuilder(msg.length());
-        for (int i = 0; i < msg.length(); i++)
-            builder.append((char)decrypt(msg.charAt(i), keys));
-
-        return builder.toString();
-    }
-
-    /**
-     * Writes decrypted contents of in to out
-     * @param in source of encrypted data
-     * @param out destination
-     * @param key encryption key
-     * @throws IOException
-     */
-    public static void decrypt(InputStream in, OutputStream out, int key) throws IOException {
-        int[] keys = getKeys(key);
-        while(in.available() != 0)
-            out.write(decrypt(in.read(), keys));
-    }
-
     static int encrypt(int c, int[] keys) {
         int result = f(IP(c), keys[0]);
         result = (result << 28) >>> 24 | (result >>> 4);
         result = f(result, keys[1]);
         return inverseIP(result);
-    }
-
-    static int decrypt(int c, int[] keys) {
-        int[] newKeys = new int[2];
-        newKeys[0] = keys[1];
-        newKeys[1] = keys[0];
-        return encrypt(c, newKeys);
     }
 
     static int f(int plainText, int subKey) {
@@ -104,6 +51,22 @@ public class SDESEncryptor {
 
     static int IP(int plainText) {
         return permutate(plainText, 1,3,0,4,7,5,2,6);
+    }
+
+    public static String decrypt(String msg, int key) {
+        int[] keys = getKeys(key);
+        StringBuilder builder = new StringBuilder(msg.length());
+        for (int i = 0; i < msg.length(); i++)
+            builder.append((char)decrypt(msg.charAt(i), keys));
+
+        return builder.toString();
+    }
+
+    static int decrypt(int c, int[] keys) {
+        int[] newKeys = new int[2];
+        newKeys[0] = keys[1];
+        newKeys[1] = keys[0];
+        return encrypt(c, newKeys);
     }
 
     static int inverseIP(int cryptoText) {
