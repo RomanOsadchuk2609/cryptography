@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Lab9 extends Lab {
     static {
-        INPUT = FileReader.readFile("/Users/dron/IdeaProjects/cryptography/src/res/text1_2.txt");
+        INPUT = FileReader.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text9.txt");
     }
 
     public static void main(String[] args) {

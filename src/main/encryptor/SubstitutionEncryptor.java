@@ -17,6 +17,7 @@ public class SubstitutionEncryptor implements Encryptor {
     public String encrypt(String text) {
         List<String> characters = CryptographyUtils.convertStringToList(text);
         return characters.stream()
+                .map(String::toLowerCase)
                 .filter(CryptographyConstants.ALPHABET::contains)
                 .map(this::encryptCharacter)
                 .map(number -> number < 10
