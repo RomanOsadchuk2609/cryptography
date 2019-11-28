@@ -38,4 +38,19 @@ public class CryptographyUtils {
         }
         return resultList;
     }
+
+    /**
+     * Verifies number is simple
+     */
+    public static boolean isSimple(long p) {
+        if (p < 2 && p > -2) {
+            return false;
+        }
+        for (int i = 2; i < p; i++) {
+            if (p % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -1,5 +1,7 @@
 package main.lab;
 
+import main.util.CryptographyUtils;
+
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ public class Lab7 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input p: ");
         long p = scanner.nextInt();//10007
-        if (!isSimple(p)) {
+        if (!CryptographyUtils.isSimple(p)) {
             throw new Exception("Invalid value of p!");
         }
         long a = getPrimaryRoot(p);
@@ -59,19 +61,6 @@ public class Lab7 {
                 return false;
             }
             set.add(last);
-        }
-        return true;
-    }
-
-    private static boolean isSimple(long p) {
-        if (p < 1000) {
-            return false;
-        }
-        for (int i = 2; i < p; i++) {
-            if (p % i == 0) {
-                System.out.println(p + "%" + i + "==0");
-                return false;
-            }
         }
         return true;
     }
