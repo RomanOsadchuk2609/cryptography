@@ -16,7 +16,7 @@ public class SDESEncryptor {
     }
 
     static int encrypt(int c, int[] keys) {
-        System.out.println(c);
+//        System.out.println(c);
         int result = f(IP(c), keys[0]);
         result = (result << 28) >>> 24 | (result >>> 4);
         result = f(result, keys[1]);

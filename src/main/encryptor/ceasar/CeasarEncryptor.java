@@ -5,7 +5,7 @@ import main.util.CryptographyConstants;
 
 import java.util.stream.Collectors;
 
-import static main.util.CryptographyConstants.ALPHABET;
+import static main.util.CryptographyConstants.UKRAINIAN_ALPHABET;
 
 public class CeasarEncryptor implements Encryptor {
     private int key = 3;
@@ -24,14 +24,14 @@ public class CeasarEncryptor implements Encryptor {
 
     private String encryptCharacter(String input, char character) {
         String characterString = String.valueOf(character);
-        if (!CryptographyConstants.ALPHABET.contains(characterString)) {
+        if (!CryptographyConstants.UKRAINIAN_ALPHABET.contains(characterString)) {
             return CryptographyConstants.EMPTY_STRING;
         } else if (input.contains(characterString)) {
-            int newIndex = ALPHABET.indexOf(characterString) + key;
-            while (newIndex >= ALPHABET.size()) {
-                newIndex -= ALPHABET.size();
+            int newIndex = UKRAINIAN_ALPHABET.indexOf(characterString) + key;
+            while (newIndex >= UKRAINIAN_ALPHABET.size()) {
+                newIndex -= UKRAINIAN_ALPHABET.size();
             }
-            return ALPHABET.get(newIndex);
+            return UKRAINIAN_ALPHABET.get(newIndex);
         } else {
             return CryptographyConstants.EMPTY_STRING;
         }

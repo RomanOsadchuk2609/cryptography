@@ -6,15 +6,15 @@ import main.decryptor.FrequencyAnalysisDecryptor;
 import main.encryptor.Encryptor;
 import main.encryptor.ceasar.CaesarAthensSystemEncryptor;
 import main.encryptor.ceasar.CeasarEncryptor;
-import main.util.FileReader;
+import main.util.FileOperationsHelper;
 
 public class Lab1_2 extends Lab {
     static {
-        INPUT = FileReader.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text1_2.txt");
+        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text1_2.txt");
     }
 
     public static void main(String[] args) {
-//        ceasarEncryption();
+        ceasarEncryption();
         ceasarAthensSystemEncryption();
     }
 

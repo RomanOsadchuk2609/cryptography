@@ -1,16 +1,16 @@
 package main.lab;
 
 import main.encryptor.SDESEncryptor;
-import main.util.FileReader;
+import main.util.FileOperationsHelper;
 
 public class Lab4 extends Lab{
     static {
-        INPUT = FileReader.readFile("/Users/dron/IdeaProjects/cryptography/src/res/text3.txt");
+        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text3.txt");
     }
 
     public static void main(String[] args) {
-        String encryptedtext = SDESEncryptor.encrypt(INPUT, 51);
-        String decryptedText = SDESEncryptor.decrypt(encryptedtext, 51);
+        String encryptedtext = SDESEncryptor.encrypt(INPUT, 151);
+        String decryptedText = SDESEncryptor.decrypt(encryptedtext, 151);
         showResult(INPUT, encryptedtext, decryptedText);
     }
 }

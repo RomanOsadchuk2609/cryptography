@@ -24,14 +24,14 @@ public class CaesarAthensSystemDecryptor implements Decryptor {
 
     private String decryptCharacter(String input, char character) {
         String characterString = String.valueOf(character);
-        if (CryptographyConstants.ALPHABET.contains(characterString) && input.contains(characterString)) {
-            int newIndex = (modInverse(keyA, CryptographyConstants.ALPHABET.size())
-                    * (CryptographyConstants.ALPHABET.indexOf(characterString) + CryptographyConstants.ALPHABET.size() - keyB));
+        if (CryptographyConstants.UKRAINIAN_ALPHABET.contains(characterString) && input.contains(characterString)) {
+            int newIndex = (modInverse(keyA, CryptographyConstants.UKRAINIAN_ALPHABET.size())
+                    * (CryptographyConstants.UKRAINIAN_ALPHABET.indexOf(characterString) + CryptographyConstants.UKRAINIAN_ALPHABET.size() - keyB));
             if (newIndex < 0) {
                 newIndex *= -1;
             }
-            newIndex = newIndex % CryptographyConstants.ALPHABET.size();
-            return CryptographyConstants.ALPHABET.get(newIndex);
+            newIndex = newIndex % CryptographyConstants.UKRAINIAN_ALPHABET.size();
+            return CryptographyConstants.UKRAINIAN_ALPHABET.get(newIndex);
         } else {
             return CryptographyConstants.EMPTY_STRING;
         }

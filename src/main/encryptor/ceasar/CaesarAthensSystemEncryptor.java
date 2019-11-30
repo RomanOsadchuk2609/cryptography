@@ -5,14 +5,14 @@ import main.util.CryptographyConstants;
 
 import java.util.stream.Collectors;
 
-import static main.util.CryptographyConstants.ALPHABET;
+import static main.util.CryptographyConstants.UKRAINIAN_ALPHABET;
 
 public class CaesarAthensSystemEncryptor implements Encryptor {
     private int keyA = 3;
     private int keyB = 5;
 
     public CaesarAthensSystemEncryptor(int keyA, int keyB) throws Exception {
-        if (ALPHABET.size() % keyA == 0) {
+        if (UKRAINIAN_ALPHABET.size() % keyA == 0) {
             throw new Exception("Invalid key");
         }
         this.keyA = keyA;
@@ -29,9 +29,9 @@ public class CaesarAthensSystemEncryptor implements Encryptor {
 
     private String encryptCharacter(String input, char character) {
         String characterString = String.valueOf(character);
-        if (ALPHABET.contains(characterString)) {
-            int newIndex = (keyA * ALPHABET.indexOf(characterString) + keyB) % ALPHABET.size();
-            return ALPHABET.get(newIndex);
+        if (UKRAINIAN_ALPHABET.contains(characterString)) {
+            int newIndex = (keyA * UKRAINIAN_ALPHABET.indexOf(characterString) + keyB) % UKRAINIAN_ALPHABET.size();
+            return UKRAINIAN_ALPHABET.get(newIndex);
         } else {
             return CryptographyConstants.EMPTY_STRING;
         }

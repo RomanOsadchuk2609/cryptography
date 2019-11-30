@@ -5,7 +5,7 @@ import main.decryptor.SubstitutionDecryptor;
 import main.encryptor.Encryptor;
 import main.encryptor.SubstitutionEncryptor;
 import main.util.CryptographyConstants;
-import main.util.FileReader;
+import main.util.FileOperationsHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Lab9 extends Lab {
     static {
-        INPUT = FileReader.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text9.txt");
+        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text9.txt");
     }
 
     public static void main(String[] args) {
