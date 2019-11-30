@@ -39,6 +39,18 @@ public class CryptographyUtils {
         return resultList;
     }
 
+    public static List<Long> buildEncryptedLongNumbersList(String text) {
+        List<Long> resultList = new ArrayList<>();
+        if (text.length() % 2 == 0) {
+            do {
+                String number = text.substring(0, 2);
+                resultList.add(Long.valueOf(number));
+                text = text.replaceFirst(number, CryptographyConstants.EMPTY_STRING);
+            } while (text.length() > 0);
+        }
+        return resultList;
+    }
+
     /**
      * Verifies number is simple
      */
