@@ -14,19 +14,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lab6 extends Lab {
-    private static final String ENCRYPTED_MESSAGE_FILE_PATH = "D:\\IdeaProjects\\cryptography\\src\\main\\lab\\lab6\\encyptedMessage.txt";
+    private static final String ENCRYPTED_MESSAGE_FILE_PATH = "/Users/dron/IdeaProjects/cryptography/src/main/lab/lab6/encyptedMessage.txt";
 
-    private static final String SIGNATURE_FILE_PATH = "D:\\IdeaProjects\\cryptography\\src\\main\\lab\\lab6\\signature.txt";
+    private static final String SIGNATURE_FILE_PATH = "/Users/dron/IdeaProjects/cryptography/src/main/lab/lab6/signature.txt";
 
     private static final int p = 3, q = 11, n = p * q, E = 7, D = 3;
 
     static {
-        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\main\\lab\\lab6\\text6.txt");
+        INPUT = FileOperationsHelper.readFile("/Users/dron/IdeaProjects/cryptography/src/main/lab/lab6/text6.txt");
     }
 
     public static void main(String[] args) {
         encrypt();
-        System.out.println("**************************************");
+        System.out.println("\n\n");
         decrypt();
     }
 

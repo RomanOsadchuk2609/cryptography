@@ -3,6 +3,7 @@ package main.lab;
 import main.util.CryptographyUtils;
 import main.util.FileOperationsHelper;
 
+import java.io.FileReader;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class Lab8 extends Lab {
     static {
-        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text8.txt");
+        INPUT = FileOperationsHelper.readFile("/Users/dron/IdeaProjects/cryptography/src/res/text8.txt");
     }
 
     public static void main(String[] args) throws Exception {
@@ -25,12 +26,14 @@ public class Lab8 extends Lab {
         }
         System.out.println("x = " + x);
 
-        List<Byte> sList = generateSList(p, q, n, x, 8*INPUT.length());
+        int length = INPUT.length();
+
+        List<Byte> sList = generateSList(p, q, n, x, 8*length);
         System.out.println(sList);
         int sNumber = convertBinToDec(sList);
-//        System.out.println(sNumber);
+        System.out.println(sNumber);
         char sChar = (char) sNumber;
-//        System.out.println(sChar);
+        System.out.println(sChar);
         String encryptedText = xOrText(INPUT, sChar);
         String decryptedText = xOrText(encryptedText, sChar);
         showResult(INPUT, encryptedText, decryptedText);
@@ -71,7 +74,8 @@ public class Lab8 extends Lab {
         xList.add((x * x) % n);
         System.out.println("x[0] = " + xList.get(0));
         for (int i = 1; i < amountOfBits; i++) {
-            long newX = (long) Math.pow(xList.get(i - 1), 2) % n;
+            long
+                    newX = (long) Math.pow(xList.get(i - 1), 2) % n;
             xList.add(newX);
             System.out.println("x[" + i + "] = " + newX + ", ");
         }

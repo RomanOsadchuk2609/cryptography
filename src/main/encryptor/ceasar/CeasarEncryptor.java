@@ -23,15 +23,16 @@ public class CeasarEncryptor implements Encryptor {
     }
 
     private String encryptCharacter(String input, char character) {
-        String characterString = String.valueOf(character);
-        if (!CryptographyConstants.UKRAINIAN_ALPHABET.contains(characterString)) {
-            return CryptographyConstants.EMPTY_STRING;
-        } else if (input.contains(characterString)) {
-            int newIndex = UKRAINIAN_ALPHABET.indexOf(characterString) + key;
-            while (newIndex >= UKRAINIAN_ALPHABET.size()) {
-                newIndex -= UKRAINIAN_ALPHABET.size();
+        String characterString = String.valueOf(character).toLowerCase();
+        if (!CryptographyConstants.ALPHABET.contains(characterString)) {
+            return CryptographyConstants.WHITE_SPACE;
+        } else if (CryptographyConstants.ALPHABET.contains(characterString)) {
+            int newIndex = CryptographyConstants.ALPHABET.indexOf(characterString) + key;
+            while (newIndex >= CryptographyConstants.ALPHABET.size()) {
+                newIndex -= CryptographyConstants.ALPHABET.size();
             }
-            return UKRAINIAN_ALPHABET.get(newIndex);
+            System.out.println(CryptographyConstants.ALPHABET.get(newIndex));
+            return CryptographyConstants.ALPHABET.get(newIndex);
         } else {
             return CryptographyConstants.EMPTY_STRING;
         }

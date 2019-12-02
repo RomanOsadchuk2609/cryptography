@@ -12,21 +12,21 @@ public class FrequencyAnalysisDecryptor implements Decryptor {
         Set<String> characterFrequencySet = buildCharacterFrequencySet(encryptedText);
         List<String> characterFrequencyList = new ArrayList<>(characterFrequencySet);
         String mostOftenLetter = characterFrequencyList.get(0);
-        int key = CryptographyConstants.UKRAINIAN_ALPHABET.indexOf(mostOftenLetter) -
-                CryptographyConstants.UKRAINIAN_ALPHABET.indexOf(CryptographyConstants.UKRAINIAN_CHARACTER_FREQUENCY_SORTED_LIST.get(0));
+        int key = CryptographyConstants.ALPHABET.indexOf(mostOftenLetter) -
+                CryptographyConstants.ALPHABET.indexOf(CryptographyConstants.ALPHABET.get(0));
         System.out.println("Key = " + key);
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < encryptedText.length(); i++) {
             String character = String.valueOf(encryptedText.charAt(i));
-            if (!CryptographyConstants.UKRAINIAN_ALPHABET.contains(character)) {
+            if (!CryptographyConstants.ALPHABET.contains(character)) {
                 result.append(character);
             } else {
-                int index = CryptographyConstants.UKRAINIAN_ALPHABET.indexOf(character) - key;
-                if (index < 0 || index >= CryptographyConstants.UKRAINIAN_ALPHABET.size()) {
-                    index = Math.abs(Math.abs(index)- CryptographyConstants.UKRAINIAN_ALPHABET.size());
+                int index = CryptographyConstants.ALPHABET.indexOf(character) - key;
+                if (index < 0 || index >= CryptographyConstants.ALPHABET.size()) {
+                    index = Math.abs(Math.abs(index)- CryptographyConstants.ALPHABET.size());
                 }
-                result.append(CryptographyConstants.UKRAINIAN_ALPHABET.get(index));
+                result.append(CryptographyConstants.ALPHABET.get(index));
             }
         }
         return result.toString();
@@ -34,7 +34,7 @@ public class FrequencyAnalysisDecryptor implements Decryptor {
 
     protected Set<String> buildCharacterFrequencySet(String text) {
         Map<String, Double> characterFrequencyMap = new HashMap<>();
-        for (String character : CryptographyConstants.UKRAINIAN_ALPHABET) {
+        for (String character : CryptographyConstants.ALPHABET) {
             characterFrequencyMap.put(character, getCharacterFrequencyInString(character, text));
         }
         //sort map by values in descending order
