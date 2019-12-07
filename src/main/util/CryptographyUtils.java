@@ -65,4 +65,16 @@ public class CryptographyUtils {
         }
         return true;
     }
+
+    /**
+     * Encrypts/Decrypts text using XOR method
+     */
+    public static String xOrText(String text, int key) {
+        return text.chars()
+                .mapToObj(c -> (char) c)
+                .map(c -> c ^ key)
+                .map(c -> String.valueOf((char) c.intValue()))
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+    }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.lab.lab16.src.sample.Controller">
+   <children>
+      <RadioButton fx:id="rbEncrypt" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Encrypt" />
+      <RadioButton fx:id="rbDecrypt" layoutX="82.0" layoutY="14.0" mnemonicParsing="false" text="Decrypt" />
+      <Button fx:id="btnOpenFile" layoutX="269.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickBtnOpenFile" text="Open File" />
+      <TextField fx:id="tfKey" layoutX="152.0" layoutY="10.0" prefHeight="25.0" prefWidth="107.0" promptText="Key" />
+      <Label fx:id="labelFileName" alignment="CENTER" contentDisplay="CENTER" layoutY="35.0" prefHeight="30.0" prefWidth="350.0" text="FileNamer.txt" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="taResultPreview" editable="false" layoutX="14.0" layoutY="65.0" prefHeight="286.0" prefWidth="322.0" promptText="Result Preview" wrapText="true" />
+      <Button fx:id="btnSave" layoutX="130.0" layoutY="361.0" mnemonicParsing="false" onAction="#onClickBtnSave" prefHeight="25.0" prefWidth="90.0" text="Save" />
+   </children>
+</AnchorPane>
