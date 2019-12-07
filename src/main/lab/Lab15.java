@@ -13,9 +13,9 @@ public class Lab15 {
         try {
             Scanner keyboard = new Scanner(System.in);
             System.out.println("Enter a message");
-            String message = keyboard.next();
+            String message = keyboard.nextLine();
             System.out.println("Enter a key");
-            String key = keyboard.next();
+            String key = keyboard.nextLine();
 
             Mac hasher = Mac.getInstance("HmacSHA256");
             hasher.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
@@ -27,9 +27,9 @@ public class Lab15 {
 
             System.out.println("Checking HMAC: ");
             System.out.println("Enter a message");
-            message = keyboard.next();
+            message = keyboard.nextLine();
             System.out.println("Enter a key");
-            key = keyboard.next();
+            key = keyboard.nextLine();
 
             hasher = Mac.getInstance("HmacSHA256");
             hasher.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
@@ -44,7 +44,7 @@ public class Lab15 {
             }
         }
         catch (NoSuchAlgorithmException | InvalidKeyException ignored) {
-            System.out.println("Пєчалька.");
+            System.out.println("Error.");
         }
     }
 }
