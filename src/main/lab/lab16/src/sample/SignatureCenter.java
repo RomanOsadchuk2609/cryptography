@@ -40,17 +40,18 @@ public class SignatureCenter {
         log.append("ClientA -> Signature Center:").append(LINE_DELIMITER);
         log.append("idA: ").append(senderId).append(LINE_DELIMITER);
         log.append("idB: ").append(receiverId).append(LINE_DELIMITER);
-        log.append("EncryptedMessageA: ").append(encryptedMessageA).append(LINE_DELIMITER);
+        log.append("Encrypted Message: ").append(encryptedMessageA).append(LINE_DELIMITER);
         Integer hashA = clientA.getHashFunction().apply(message);
         log.append("HashA: ").append(hashA).append(LINE_DELIMITER);
         log.append(LINE_DELIMITER);
 
         //Signature Center
+        log.append("Signature Center:").append(LINE_DELIMITER);
         Integer keyA = clientA.getKey();
         log.append("KeyA: ").append(keyA).append(LINE_DELIMITER);
-        String decryptedMessageSC = this.cryptoFunction.apply(encryptedMessageA, keyA);
-        log.append("Decrypted message on SC: ").append(decryptedMessageSC).append(LINE_DELIMITER);
-        Integer hashSC = this.hashFunction.apply(decryptedMessageSC);
+        String decryptedMessageOnKeyA = this.cryptoFunction.apply(encryptedMessageA, keyA);
+        log.append("Decrypted message on keyA: ").append(decryptedMessageOnKeyA).append(LINE_DELIMITER);
+        Integer hashSC = this.hashFunction.apply(decryptedMessageOnKeyA);
         log.append("HashSC: ").append(hashSC).append(LINE_DELIMITER);
         boolean hashAEqualsHashSC = hashA.equals(hashSC);
         if (hashAEqualsHashSC) {
@@ -62,7 +63,7 @@ public class SignatureCenter {
             log.append("idA: ").append(senderId).append(LINE_DELIMITER);
             Integer keyB = clientB.getKey();
             log.append("KeyB: ").append(keyB).append(LINE_DELIMITER);
-            String encryptedMessageOnKeyB = this.cryptoFunction.apply(decryptedMessageSC, keyB);
+            String encryptedMessageOnKeyB = this.cryptoFunction.apply(decryptedMessageOnKeyA, keyB);
             log.append("Encrypted Message on keyB: ").append(encryptedMessageOnKeyB).append(LINE_DELIMITER);
             log.append("HashA: ").append(hashA).append(LINE_DELIMITER);
             log.append(LINE_DELIMITER);
@@ -90,7 +91,7 @@ public class SignatureCenter {
         clients.add(new Client(getNextClientId(), name, key, cryptoFunction, hashFunction));
     }
 
-    public String getClientsInfo(){
+    public String getClientsInfo() {
         StringBuilder clientsInfo = new StringBuilder("Clients: ");
         clientsInfo.append(LINE_DELIMITER)
                 .append(clients.stream()
