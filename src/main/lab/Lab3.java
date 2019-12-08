@@ -7,6 +7,7 @@ import main.util.CryptographyConstants;
 import main.util.FileOperationsHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -16,11 +17,7 @@ public class Lab3 extends Lab {
     }
 
     public static void main(String[] args) {
-        List<Integer> key = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i < 3; i++) {
-            key.add(random.nextInt(CryptographyConstants.ALPHABET.size()));//[0, ..., 32]
-        }
+        List<Integer> key = new ArrayList<>(Arrays.asList(1,2,3));
 
         GammaEncryptor encryptor = new GammaEncryptor(key);
         String encryptedText = encryptor.encrypt(INPUT);

@@ -11,8 +11,6 @@ public class Lab4 extends Lab{
     public static void main(String[] args) {
         String encryptedtext = SDESEncryptor.encrypt("h", 113);
         Lab4.decryptAttack(encryptedtext, "h");
-        String decryptedText = SDESEncryptor.decrypt(encryptedtext, 113);
-        showResult(INPUT, encryptedtext, decryptedText);
     }
 
     static void decryptAttack(String encryptedText, String finalText) {

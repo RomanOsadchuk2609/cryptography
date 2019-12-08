@@ -44,7 +44,7 @@ public class Lab15 {
             }
         }
         catch (NoSuchAlgorithmException | InvalidKeyException ignored) {
-            System.out.println("Пєчалька.");
+            System.out.println("Журбинка.");
         }
     }
 }

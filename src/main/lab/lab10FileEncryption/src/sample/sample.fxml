@@ -8,19 +8,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.lab.lab10FileEncryption.src.sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.lab.lab10FileEncryption.src.sample.Controller">
    <children>
-      <RadioButton fx:id="rbEncrypt" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Encrypt" />
-      <RadioButton fx:id="rbDecrypt" layoutX="82.0" layoutY="14.0" mnemonicParsing="false" text="Decrypt" />
-      <Button fx:id="btnOpenFile" layoutX="269.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickBtnOpenFile" text="Open File" />
-      <TextField fx:id="tfKey" layoutX="152.0" layoutY="10.0" prefHeight="25.0" prefWidth="107.0" promptText="Key" />
-      <Label fx:id="labelFileName" alignment="CENTER" contentDisplay="CENTER" layoutY="35.0" prefHeight="30.0" prefWidth="350.0" text="FileNamer.txt" textAlignment="CENTER">
+      <RadioButton fx:id="rbEncrypt" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Encrypt" />
+      <RadioButton fx:id="rbDecrypt" layoutX="84.0" layoutY="50.0" mnemonicParsing="false" text="Decrypt" />
+      <Button fx:id="btnOpenFile" layoutX="266.0" layoutY="45.0" mnemonicParsing="false" onAction="#onClickBtnOpenFile" text="Open File" />
+      <TextField fx:id="tfKey1" layoutX="152.0" layoutY="10.0" prefHeight="25.0" prefWidth="107.0" promptText="Key" />
+      <Label fx:id="labelFileName" alignment="CENTER" contentDisplay="CENTER" layoutY="137.0" prefHeight="30.0" prefWidth="350.0" text="FileNamer.txt" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="taResultPreview" editable="false" layoutX="14.0" layoutY="65.0" prefHeight="286.0" prefWidth="322.0" promptText="Result Preview" wrapText="true" />
-      <Button fx:id="btnSave" layoutX="130.0" layoutY="361.0" mnemonicParsing="false" onAction="#onClickBtnSave" prefHeight="25.0" prefWidth="90.0" text="Save" />
+      <TextArea fx:id="taResultPreview" editable="false" layoutX="14.0" layoutY="65.0" prefHeight="286.0" prefWidth="322.0" promptText="Result Preview" wrapText="true" AnchorPane.bottomAnchor="40.0" />
+      <Button fx:id="btnSave" layoutX="130.0" layoutY="361.0" mnemonicParsing="false" onAction="#onClickBtnSave" prefHeight="25.0" prefWidth="90.0" text="Save" AnchorPane.bottomAnchor="10.0" />
+      <TextField fx:id="tfKey2" layoutX="152.0" layoutY="45.0" prefHeight="25.0" prefWidth="107.0" promptText="Key" />
+      <TextField fx:id="tfKey3" layoutX="152.0" layoutY="83.0" prefHeight="25.0" prefWidth="107.0" promptText="Key" />
    </children>
 </AnchorPane>
