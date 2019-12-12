@@ -5,6 +5,13 @@ import main.util.BlumBlumShub;
 import main.util.FileOperationsHelper;
 import main.util.TriFunction;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -12,7 +19,8 @@ import java.util.List;
 
 public class Lab13 extends Lab {
     static {
-        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text8.txt");
+        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\main\\lab\\lab12\\input.txt");
+//        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text1_2.txt");
     }
 
     private static final String ENCRYPTED_SUBSTITUTION_MESSAGE_FILE_PATH = "D:\\IdeaProjects\\cryptography\\src\\res\\encrypted18.txt";
@@ -23,26 +31,31 @@ public class Lab13 extends Lab {
 
     private static final TriFunction<Short, Short, Short, Short> interactionFunction86 = (a, b, c) -> (short) ((a | b) ^ c);
 
-    public static void main(String[] args) {
-        //cellAvtomat();
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+        cellAvtomat();
         //bbs();
     }
 
-    private static void cellAvtomat() {
+    private static void cellAvtomat() throws FileNotFoundException, UnsupportedEncodingException {
         CAGenerator caGenerator = new CAGenerator(interactionFunction150);
         // and do something
         List<Character> sequenceList = new ArrayList<>();
+
+        File file = new File("AvgNumbers.txt");
+        long start = System.currentTimeMillis();
+        PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")), false);
         for (int i = 0; i < INPUT.length(); i++) {
-            sequenceList.add((char) caGenerator.getNext());
+            char encodedChar = (char) (INPUT.charAt(i) ^ caGenerator.getNext());
+            writer.print(encodedChar);
         }
-        System.out.println(INPUT);
-        String encrypted = xOrText(INPUT, sequenceList);
-        System.out.println(encrypted);
-        System.out.println(xOrText(encrypted, sequenceList));
-        FileOperationsHelper.writeToFile(ENCRYPTED_SUBSTITUTION_MESSAGE_FILE_PATH, encrypted);
+        writer.close();
+//        System.out.println(INPUT);
+//        String encrypted = xOrText(INPUT, sequenceList);
+//        System.out.println(encrypted);
+//        FileOperationsHelper.writeToFile(ENCRYPTED_SUBSTITUTION_MESSAGE_FILE_PATH, encrypted);
     }
 
-    private static void bbs() {
+    private static void bbs() throws FileNotFoundException, UnsupportedEncodingException {
 
         // First use the internal, stock "true" random number
         // generator to get a "true random seed"
@@ -62,15 +75,19 @@ public class Lab13 extends Lab {
         BlumBlumShub bbs = new BlumBlumShub(nval, seed);
 
         // and do something
-        List<Character> sequenceList = new ArrayList<>();
+
+        File file = new File("AvgNumbers.txt");
+        long start = System.currentTimeMillis();
+        PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")), false);
         for (int i = 0; i < INPUT.length(); i++) {
-            sequenceList.add((char) bbs.next(16));
+            char encodedChar = (char) (INPUT.charAt(i) ^ bbs.next(16));
+            writer.print(encodedChar);
         }
-        System.out.println(INPUT);
-        String encrypted = xOrText(INPUT, sequenceList);
-        System.out.println(encrypted);
-        System.out.println(xOrText(encrypted, sequenceList));
-        FileOperationsHelper.writeToFile(ENCRYPTED_SUBSTITUTION_MESSAGE_FILE_PATH, encrypted);
+//        System.out.println(INPUT);
+//        String encrypted = xOrText(INPUT, sequenceList);
+//        System.out.println(encrypted);
+//        System.out.println(xOrText(encrypted, sequenceList));
+//        FileOperationsHelper.writeToFile(ENCRYPTED_SUBSTITUTION_MESSAGE_FILE_PATH, encrypted);
     }
 
     private static String xOrText(String text, List<Character> sequence) {

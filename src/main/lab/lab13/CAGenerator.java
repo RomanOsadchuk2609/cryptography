@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class CAGenerator {
     private TriFunction<Short, Short, Short, Short> interactionFunction;
-    private short[] array = new short[512];
-    private List<Integer> indexes = Arrays.asList(1, 27, 312, 404, 5, 61, 197, 18, 509, 201, 34, 444, 237, 500, 410, 111);
+    private short[] array = new short[100];
+    private List<Integer> indexes = Arrays.asList(1, 27, 11, 2, 5, 61, 13, 18, 87, 65, 99, 23, 51, 78, 13, 89);
 
     public CAGenerator(TriFunction<Short, Short, Short, Short> interactionFunction) {
         this.interactionFunction = interactionFunction;
