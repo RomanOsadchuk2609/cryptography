@@ -10,10 +10,10 @@ import java.util.List;
 
 public class Lab13 extends Lab {
     static {
-        INPUT = FileOperationsHelper.readFile("/Users/dron/IdeaProjects/cryptography/src/res/text8.txt");
+        INPUT = FileOperationsHelper.readFile("D:\\IdeaProjects\\cryptography\\src\\res\\text8.txt");
     }
 
-    private static final String ENCRYPTED_SUBSTITUTION_MESSAGE_FILE_PATH = "/Users/dron/IdeaProjects/cryptography/src/res/encrypted18.txt";
+    private static final String ENCRYPTED_SUBSTITUTION_MESSAGE_FILE_PATH = "D:\\IdeaProjects\\cryptography\\src\\res\\encrypted18.txt";
 
 
     public static void main(String[] args) throws Exception {
