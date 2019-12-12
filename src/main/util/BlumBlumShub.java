@@ -201,7 +201,7 @@ public class BlumBlumShub {
      * @return int
      */
     public int next(int numBits) {
-        // TODO: find out how many LSB one can extract per cycle.
+        //  find out how many LSB one can extract per cycle.
         //   it is more than one.
         int result = 0;
         for (int i = numBits; i != 0; --i) {
